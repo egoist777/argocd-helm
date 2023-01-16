@@ -4,7 +4,7 @@ imageName: gcr.io/google-samples/microservices-demo/frontend
 imageVersion: v0.5.0
 containerVariables:
  - name: PORT
-   value: "8080"
+   value: "9999"
  - name: SHIPPING_SERVICE_ADDR
    value: "shippingservice:50051"
  - name: PRODUCT_CATALOG_SERVICE_ADDR
@@ -21,8 +21,8 @@ containerVariables:
    value: "recommendationservice:8080"
     
 serviceName: frontend
-servicePort: 8080
-serviceTargetPort: 8080
+servicePort: 9999
+serviceTargetPort: 9999
 serviceType: NodePort
 
 cpuRequest: 256m
