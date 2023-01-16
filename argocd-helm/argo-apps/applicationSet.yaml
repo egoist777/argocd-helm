@@ -1,22 +1,34 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: main
+  name: microservices
 spec:
   generators:
   - list:
       elements:
       - appName: adservice
+        valueFile: "values/adservice_values.yaml"
       - appName: cartservice
+        valueFile: "values/cartservice_values.yaml"
       - appName: checkoutservice
+        valueFile: "values/checkoutservice_values.yaml"
       - appName: currencyservice
+        valueFile: "values/currencyservice_values.yaml"
       - appName: emailservice
+        valueFile: "values/emailservice_values.yaml"
       - appName: frontend
+        valueFile: "values/frontend_values.yaml"
       - appName: paymentservice
+        valueFile: "values/paymentservice_values.yaml"
       - appName: productcatalogservice
+        valueFile: "values/productcatalogservice_values.yaml"
       - appName: recommendationservice
+        valueFile: "values/recommendationservice_values.yaml"
       - appName: redis
+        valueFile: "values/redis_values.yaml"  
       - appName: shippingservice
+        valueFile: "values/shippingservice_values.yaml"
+        
   template:
     metadata:
       name: "{{appName}}"
@@ -25,16 +37,16 @@ spec:
     spec:
       project: default
       source:
-        repoURL: 
+        repoURL: git@github.com:egoist777/argocd-helm.git
         targetRevision: HEAD
-        path: "kubernetes/resources/{{appName}}"
+        path: "argocd-helm/charts/{{appName}}"
         helm:
           releaseName: "{{appName}}"
           valueFiles:
-          - values.yaml
+          - "{{valueFile}}"
       destination:
         name: in-cluster
-        namespace: "{{namespace}}"
+        namespace: microservices
       syncPolicy:
         automated:
           prune: true
