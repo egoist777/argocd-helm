@@ -7,27 +7,27 @@ spec:
   - list:
       elements:
       - appName: adservice
-        valueFile: "values/adservice_values.yaml"
+        valueFile: "../../values/adservice_values.yaml"
       - appName: cartservice
-        valueFile: "values/cartservice_values.yaml"
+        valueFile: "../../values/cartservice_values.yaml"
       - appName: checkoutservice
-        valueFile: "values/checkoutservice_values.yaml"
+        valueFile: "../../values/checkoutservice_values.yaml"
       - appName: currencyservice
-        valueFile: "values/currencyservice_values.yaml"
+        valueFile: "../../values/currencyservice_values.yaml"
       - appName: emailservice
-        valueFile: "values/emailservice_values.yaml"
+        valueFile: "../../values/emailservice_values.yaml"
       - appName: frontend
-        valueFile: "values/frontend_values.yaml"
+        valueFile: "../../values/frontend_values.yaml"
       - appName: paymentservice
-        valueFile: "values/paymentservice_values.yaml"
+        valueFile: "../../values/paymentservice_values.yaml"
       - appName: productcatalogservice
-        valueFile: "values/productcatalogservice_values.yaml"
+        valueFile: "../../values/productcatalogservice_values.yaml"
       - appName: recommendationservice
-        valueFile: "values/recommendationservice_values.yaml"
+        valueFile: "../../values/recommendationservice_values.yaml"
       - appName: redis
-        valueFile: "values/redis_values.yaml"  
+        valueFile: "../../values/redis_values.yaml"  
       - appName: shippingservice
-        valueFile: "values/shippingservice_values.yaml"
+        valueFile: "../../values/shippingservice_values.yaml"
         
   template:
     metadata:

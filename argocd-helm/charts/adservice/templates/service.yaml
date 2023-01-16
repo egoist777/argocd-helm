@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: {{ .Values.serviceName }}
 spec:
+  type: {{ .Values.serviceType }}
   selector:
     app: {{ .Values.appName }}
   ports:
   - port: {{ .Values.servicePort }}
     targetPort: {{ .Values.serviceTargetPort }}
-    type: {{ .Values.serviceType }}
