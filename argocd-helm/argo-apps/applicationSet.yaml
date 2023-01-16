@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: main
+spec:
+  generators:
+  - list:
+      elements:
+      - appName: adservice
+      - appName: cartservice
+      - appName: checkoutservice
+      - appName: currencyservice
+      - appName: emailservice
+      - appName: frontend
+      - appName: paymentservice
+      - appName: productcatalogservice
+      - appName: recommendationservice
+      - appName: redis
+      - appName: shippingservice
+  template:
+    metadata:
+      name: "{{appName}}"
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: ".;.."
+    spec:
+      project: default
+      source:
+        repoURL: 
+        targetRevision: HEAD
+        path: "kubernetes/resources/{{appName}}"
+        helm:
+          releaseName: "{{appName}}"
+          valueFiles:
+          - values.yaml
+      destination:
+        name: in-cluster
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
